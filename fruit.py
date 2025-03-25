@@ -83,27 +83,29 @@ def Menu2():
                        "\n4) Log Out" +
                        "\n5) Exit" +
                        "\nEnter 1-5: "))
+    match(menuoption):
     
-    if menuoption == "1":
-        ShowMenu()
-    elif menuoption == "2":
-        filepath = fileDir + "\\Customer.py"
-    elif menuoption == "3":
-        filepath = fileDir + "\\Receipt.py"
-    elif menuoption == "4":
-        print("Logged out successfully!")
-        filepath = fileDir + "\\loginscreens.py"
-    elif menuoption == "5":
-        print("Thank you! Goodbye!")
-        sys.exit()
-    else:
-        print("Invalid input, enter 1-5.")
-        Menu2()
+        case "1":
+            ShowMenu()
+        case "2":
+            filepath = fileDir + "\\Customer.py"
+        case "3":
+            filepath = fileDir + "\\Receipt.py"
+        case "4":
+            print("Logged out successfully!")
+            filepath = fileDir + "\\loginscreens.py"
+        case "5":
+            print("Thank you! Goodbye!")
+            sys.exit()
+        case default:
+            print("Invalid input, enter 1-5.")
+            Menu2()
     
     filenamepath = {
         "__file__":filepath,
         "__name__":"__main__",
-        };
+        }
+    
     with open(filepath,"rb")as file:
         exec(compile(file.read(),filepath,"exec"),filenamepath);
 
